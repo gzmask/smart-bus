@@ -1,0 +1,243 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+1:
+  id: 1
+  web_bus_id: 1
+  latitude: 50.4488
+  longitude: -104.615
+  is_current: true
+  is_end: false
+  is_pickup: false
+  is_dropdown: false
+  web_passenger_id: 
+  order_num: 1
+
+2:
+  id: 2
+  web_bus_id: 1
+  latitude: 50.4504
+  longitude: -104.612
+  is_current: false
+  is_end: false
+  is_pickup: true
+  is_dropdown: false
+  web_passenger_id: 1 
+  order_num: 2
+
+3:
+  id: 3
+  web_bus_id: 1
+  latitude: 50.4467
+  longitude: -104.607
+  is_current: false
+  is_end: true
+  is_pickup: false
+  is_dropdown: true
+  web_passenger_id: 1 
+  order_num: 3
+
+4:
+  id: 4
+  web_bus_id: 2
+  latitude: 50.446
+  longitude: -104.615
+  is_current: true
+  is_end: true
+  is_pickup: false
+  is_dropdown: false
+  web_passenger_id:
+  order_num: 1
+
+5:
+  id: 5
+  web_bus_id: 
+  latitude: 50.4516
+  longitude: -104.618
+  is_current: false
+  is_end: false
+  is_pickup: true
+  is_dropdown: false
+  web_passenger_id: 81
+  order_num: 
+
+6:
+  id: 6
+  web_bus_id:
+  latitude: 50.4488
+  longitude: -104.608
+  is_current: false
+  is_end: false
+  is_pickup: false
+  is_dropdown: true
+  web_passenger_id: 81
+  order_num:
+
+7:
+  id: 7
+  web_bus_id:
+  latitude: 50.4527
+  longitude: -104.62
+  is_current: false
+  is_end: false
+  is_pickup: true
+  is_dropdown: false
+  web_passenger_id: 82
+  order_num:
+
+8:
+  id: 8
+  web_bus_id:
+  latitude: 50.4535
+  longitude: -104.616
+  is_current: false
+  is_end: false
+  is_pickup: false
+  is_dropdown: true
+  web_passenger_id: 82
+  order_num:
+
+9:
+  id: 9
+  web_bus_id:
+  latitude: 50.4439
+  longitude: -104.611
+  is_current: false
+  is_end: false
+  is_pickup: true
+  is_dropdown: false
+  web_passenger_id: 83
+  order_num:
+
+10:
+  id: 10
+  web_bus_id:
+  latitude: 50.4488
+  longitude: -104.614
+  is_current: false
+  is_end: false
+  is_pickup: false
+  is_dropdown: true
+  web_passenger_id: 83
+  order_num:
+
+13:
+  id: 13
+  web_bus_id:
+  latitude: 50.4527
+  longitude: -104.624
+  is_current: false
+  is_end: false
+  is_pickup: true
+  is_dropdown: false
+  web_passenger_id: 92
+  order_num:
+
+14:
+  id: 14
+  web_bus_id:
+  latitude: 50.449
+  longitude: -104.603
+  is_current: false
+  is_end: false
+  is_pickup: false
+  is_dropdown: true
+  web_passenger_id: 92
+  order_num:
+
+15:
+  id: 15
+  web_bus_id:
+  latitude: 50.4505
+  longitude: -104.6234
+  is_current: false
+  is_end: false
+  is_pickup: true
+  is_dropdown: false
+  web_passenger_id: 93
+  order_num:
+
+16:
+  id: 16
+  web_bus_id:
+  latitude: 50.4502
+  longitude: -104.6145
+  is_current: false
+  is_end: false
+  is_pickup: false
+  is_dropdown: true
+  web_passenger_id: 93
+  order_num:
+
+17:
+  id: 17
+  web_bus_id:
+  latitude: 50.4516
+  longitude: -104.6243
+  is_current: false
+  is_end: false
+  is_pickup: true
+  is_dropdown: false
+  web_passenger_id: 94
+  order_num:
+
+18:
+  id: 18
+  web_bus_id:
+  latitude: 50.4494
+  longitude: -104.6135
+  is_current: false
+  is_end: false
+  is_pickup: false
+  is_dropdown: true
+  web_passenger_id: 94
+  order_num:
+
+19:
+  id: 19
+  web_bus_id:
+  latitude: 50.4494
+  longitude: -104.6136
+  is_current: false
+  is_end: false
+  is_pickup: true
+  is_dropdown: false
+  web_passenger_id: 95
+  order_num:
+
+20:
+  id: 20
+  web_bus_id:
+  latitude: 50.4470
+  longitude: -104.607
+  is_current: false
+  is_end: false
+  is_pickup: false
+  is_dropdown: true
+  web_passenger_id: 95
+  order_num:
+
+21:
+  id: 21
+  web_bus_id:
+  latitude: 50.4471
+  longitude: -104.608
+  is_current: false
+  is_end: false
+  is_pickup: true
+  is_dropdown: false
+  web_passenger_id: 96
+  order_num:
+
+22:
+  id: 22
+  web_bus_id:
+  latitude: 50.4495
+  longitude: -104.6137
+  is_current: false
+  is_end: false
+  is_pickup: false
+  is_dropdown: true
+  web_passenger_id: 96
+  order_num:
+
+

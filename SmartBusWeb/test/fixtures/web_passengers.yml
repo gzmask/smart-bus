@@ -1,0 +1,46 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+1:
+  id: 1 
+  password: ray
+  web_bus_id: 1
+
+2:
+  id: 81
+  password: tyler
+  web_bus_id: 
+
+3:
+  id: 82
+  password: rayman
+  web_bus_id: 
+
+4:
+  id: 83
+  password: miller
+  web_bus_id: 
+
+5:
+  id: 92
+  password: josh
+  web_bus_id: 
+
+6:
+  id: 93
+  password: steve
+  web_bus_id: 
+
+7:
+  id: 94
+  password: tony
+  web_bus_id: 
+
+8:
+  id: 95
+  password: Cory
+  web_bus_id: 
+
+9:
+  id: 96
+  password: Vinay
+  web_bus_id: 

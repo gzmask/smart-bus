@@ -1,0 +1,20 @@
+<h1>Listing web_buses</h1>
+
+<table>
+  <tr>
+    <th>Capacity</th>
+  </tr>
+
+<% @web_buses.each do |web_bus| %>
+  <tr>
+    <td><%=h web_bus.capacity %></td>
+    <td><%= link_to 'Show', web_bus %></td>
+    <td><%= link_to 'Edit', edit_web_bus_path(web_bus) %></td>
+    <td><%= link_to 'Destroy', web_bus, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New web_bus', new_web_bus_path %>

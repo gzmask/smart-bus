@@ -1,0 +1,19 @@
+<h1>New web_lock</h1>
+
+<% form_for(@web_lock) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :resource %><br />
+    <%= f.text_field :resource %>
+  </p>
+  <p>
+    <%= f.label :in_use %><br />
+    <%= f.check_box :in_use %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', web_locks_path %>

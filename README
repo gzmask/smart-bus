@@ -1,0 +1,3 @@
+
+to see how the path finding algorithm works, see testcase1.rb and testcase2.rb.
+The running time of testcase1 is about 5 seconds and the testcase2 is about 58 seconds. The test is ran on Althon X2 2.0Ghz on Ubuntu 9.04 32bit(virtualBox quest on Vista64 host) and compiled Ruby 1.9.1 P120 version. 

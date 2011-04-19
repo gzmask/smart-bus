@@ -1,0 +1,22 @@
+<h1>Listing web_passengers</h1>
+
+<table>
+  <tr>
+    <th>Password</th>
+    <th>Web bus</th>
+  </tr>
+
+<% @web_passengers.each do |web_passenger| %>
+  <tr>
+    <td><%=h web_passenger.password %></td>
+    <td><%=h web_passenger.web_bus_id %></td>
+    <td><%= link_to 'Show', web_passenger %></td>
+    <td><%= link_to 'Edit', edit_web_passenger_path(web_passenger) %></td>
+    <td><%= link_to 'Destroy', web_passenger, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New web_passenger', new_web_passenger_path %>

@@ -1,0 +1,16 @@
+<h1>Editing web_bus</h1>
+
+<% form_for(@web_bus) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :capacity %><br />
+    <%= f.text_field :capacity %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @web_bus %> |
+<%= link_to 'Back', web_buses_path %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  resource: MyString
+  in_use: false
+
+two:
+  resource: MyString
+  in_use: false

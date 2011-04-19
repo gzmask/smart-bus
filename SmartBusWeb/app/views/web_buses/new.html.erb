@@ -1,0 +1,94 @@
+<%= GMap.header %>
+<%= Mapstraction.header(:google) %>
+<h1>New web_bus</h1>
+
+<% form_for(@web_bus) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :capacity %><br />
+    <%= f.text_field :capacity %>
+    <%= f.submit 'Create' %>
+  </p>
+  <div id="map_div" style="width:1000px;height:480px"></div>
+  <% f.fields_for :web_locations do |location_f| %>
+    <div>
+    <%= location_f.label :latitude, 'latitude:' %>
+    <%= location_f.text_field :latitude %>    
+    <%= location_f.label :longitude, 'longitude:' %>
+    <%= location_f.text_field :longitude %>
+      <% unless location_f.object.new_record? %>
+        <div>
+          <%= location_f.label :_delete, 'Remove:' %>
+          <%= location_f.check_box :_delete %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+<% end %>
+
+<%= link_to 'Back', web_buses_path %>
+<script type="text/javascript">
+var map;
+window.onload = addCodeToFunction(window.onload,function() {
+
+  mapstraction = new Mapstraction("map_div","google");
+  mapstraction.setCenterAndZoom(new LatLonPoint(50.4493,-104.617),14);
+  mapstraction.addControls({largeMap : true,mapType : true});
+  mapstraction.addControls({
+    pan: true,
+    zoom: 'small',
+    map_type: true
+  });
+
+  map = mapstraction.getMap();
+
+  var busIcon = new GIcon(G_DEFAULT_ICON);
+  busIcon.shadow = "/images/bus_shadow.png";
+  busIcon.image = "/images/bus_icon.png";
+  busIcon.iconSize = new GSize(50, 33);
+  busIcon.shadowSize = new GSize(51, 21);
+  busIcon.iconAnchor = new GPoint(44, 24);
+  busIcon.infoWindowAnchor = new GPoint(9, 2);
+  markerOptions = { icon:busIcon, draggable: true};
+  var bus_location = new GLatLng(50.4472,-104.627);
+  var marker_src = new GMarker(bus_location, markerOptions);
+  GEvent.addListener(marker_src, "dragstart", function() {
+  map.closeInfoWindow();
+  });
+  GEvent.addListener(marker_src, "dragend", function() {
+  document.getElementById('web_bus_web_locations_attributes_0_latitude').defaultValue = String(marker_src.getLatLng().lat());
+  document.getElementById('web_bus_web_locations_attributes_0_longitude').defaultValue = String(marker_src.getLatLng().lng());
+  });
+  map.addOverlay(marker_src);
+
+  <% #colors for each bus
+    colors = Array.new
+    colors << "\"#ff0000\"" #bus1
+    colors << "\"#00ff00\"" #bus2
+    colors << "\"#0000ff\"" #bus3
+    colors << "\"#ff0f00\"" #bus4
+    colors << "\"#ff00f0\"" #bus5
+    colors << "\"#00f0ff\"" #bus6
+    #draw the routine line
+    buses = WebBus.all 
+      buses.each do |bus|
+      %>
+      var polyline = new GPolyline([
+      <%
+      locations = Array.new
+      web_locs = bus.web_locations.sort_by {|a| a.order_num }
+      web_locs.each do |location|
+        %>new GLatLng( <%=location.latitude.to_s%>, <%=location.longitude.to_s%>), 
+      <% end %>
+      ],<%= colors[(bus.id-1)%6] %>,3);
+      map.addOverlay(polyline);
+      var marker = new GMarker(new GLatLng( <%=web_locs[0].latitude.to_s%>, <%=web_locs[0].longitude.to_s%>)); 
+      map.addOverlay(marker);
+      <% end %>
+      document.getElementById('web_bus_web_locations_attributes_0_latitude').defaultValue = String(marker_src.getLatLng().lat());
+      document.getElementById('web_bus_web_locations_attributes_0_longitude').defaultValue = String(marker_src.getLatLng().lng());
+      document.getElementById('web_bus_capacity').defaultValue = 5;
+});
+</script>

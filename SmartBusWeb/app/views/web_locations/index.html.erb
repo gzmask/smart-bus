@@ -1,0 +1,34 @@
+<h1>Listing web_locations</h1>
+<table>
+  <tr>
+    <th>Web bus</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Is current</th>
+    <th>Is end</th>
+    <th>Is pickup</th>
+    <th>Is dropdown</th>
+    <th>Web passenger</th>
+    <th>Order num</th>
+  </tr>
+
+<% @web_locations.each do |web_location| %>
+  <tr>
+    <td><%=h web_location.web_bus_id %></td>
+    <td><%=h web_location.latitude %></td>
+    <td><%=h web_location.longitude %></td>
+    <td><%=h web_location.is_current %></td>
+    <td><%=h web_location.is_end %></td>
+    <td><%=h web_location.is_pickup %></td>
+    <td><%=h web_location.is_dropdown %></td>
+    <td><%=h web_location.web_passenger_id %></td>
+    <td><%=h web_location.order_num %></td>
+    <td><%= link_to 'Show', web_location %></td>
+    <td><%= link_to 'Edit', edit_web_location_path(web_location) %></td>
+    <td><%= link_to 'Destroy', web_location, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+
+<%= link_to 'New web_location', new_web_location_path %>

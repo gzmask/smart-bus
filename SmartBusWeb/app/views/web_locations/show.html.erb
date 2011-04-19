@@ -1,0 +1,48 @@
+<p>
+  <b>Web bus:</b>
+  <%=h @web_location.web_bus_id %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%=h @web_location.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%=h @web_location.longitude %>
+</p>
+
+<p>
+  <b>Is current:</b>
+  <%=h @web_location.is_current %>
+</p>
+
+<p>
+  <b>Is end:</b>
+  <%=h @web_location.is_end %>
+</p>
+
+<p>
+  <b>Is pickup:</b>
+  <%=h @web_location.is_pickup %>
+</p>
+
+<p>
+  <b>Is dropdown:</b>
+  <%=h @web_location.is_dropdown %>
+</p>
+
+<p>
+  <b>Web passenger:</b>
+  <%=h @web_location.web_passenger_id %>
+</p>
+
+<p>
+  <b>Order num:</b>
+  <%=h @web_location.order_num %>
+</p>
+
+
+<%= link_to 'Edit', edit_web_location_path(@web_location) %> |
+<%= link_to 'Back', web_locations_path %>

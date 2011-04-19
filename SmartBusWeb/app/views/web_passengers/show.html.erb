@@ -1,0 +1,13 @@
+<p>
+  <b>Password:</b>
+  <%=h @web_passenger.password %>
+</p>
+
+<p>
+  <b>Web bus:</b>
+  <%=h @web_passenger.web_bus_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_web_passenger_path(@web_passenger) %> |
+<%= link_to 'Back', web_passengers_path %>

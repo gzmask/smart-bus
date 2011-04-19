@@ -1,0 +1,127 @@
+<%= GMap.header %>
+<%= Mapstraction.header(:google) %>
+<% form_for(@web_passenger) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :password %>  
+    <%= f.text_field :password %>
+    <%= f.submit 'Create' %>
+  </p>
+
+  <div id="map_div" style="width:1000px;height:480px"></div>
+  <!--p>
+    <%= f.label :web_bus_id %><br />
+    <%= f.text_field :web_bus_id %>
+  </p-->
+  <% f.fields_for :web_locations do |location_f| %>
+    <div>
+    <%= location_f.label :latitude, 'latitude:' %>
+    <%= location_f.text_field :latitude %>    
+    <%= location_f.label :longitude, 'longitude:' %>
+    <%= location_f.text_field :longitude %>
+      <% unless location_f.object.new_record? %>
+        <div>
+          <%= location_f.label :_delete, 'Remove:' %>
+          <%= location_f.check_box :_delete %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back', web_passengers_path %>
+<script type="text/javascript">
+var map;
+window.onload = addCodeToFunction(window.onload,function() {
+  mapstraction = new Mapstraction("map_div","google");
+  mapstraction.setCenterAndZoom(new LatLonPoint(50.4493,-104.617),14);
+  mapstraction.addControls({largeMap : true, mapType : true});
+  mapstraction.addControls({
+    pan: true,
+    zoom: 'small',
+    map_type: true
+  });
+
+  map = mapstraction.getMap();
+
+  var srcIcon = new GIcon(G_DEFAULT_ICON);
+  srcIcon.shadow = "/images/shadow_icon.png";
+  srcIcon.image = "/images/src_icon.png";
+  srcIcon.iconSize = new GSize(48, 44);
+  srcIcon.shadowSize = new GSize(48, 44);
+  srcIcon.iconAnchor = new GPoint(9, 44);
+  srcIcon.infoWindowAnchor = new GPoint(9, 2);
+  markerOptions = { icon:srcIcon, draggable: true};
+  var passenger_src = new GLatLng(50.4472,-104.627);
+  var marker_src = new GMarker(passenger_src, markerOptions);
+  GEvent.addListener(marker_src, "dragstart", function() {
+  map.closeInfoWindow();
+  });
+  GEvent.addListener(marker_src, "dragend", function() {
+  document.getElementById('web_passenger_web_locations_attributes_0_latitude').defaultValue = String(marker_src.getLatLng().lat());
+  document.getElementById('web_passenger_web_locations_attributes_0_longitude').defaultValue = String(marker_src.getLatLng().lng());
+  });
+  map.addOverlay(marker_src);
+
+
+  var desIcon = new GIcon(G_DEFAULT_ICON);
+  desIcon.shadow = "/images/shadow_icon.png";
+  desIcon.image = "/images/des_icon.png";
+  desIcon.iconSize = new GSize(48, 44);
+  desIcon.shadowSize = new GSize(48, 44);
+  desIcon.iconAnchor = new GPoint(9, 44);
+  desIcon.infoWindowAnchor = new GPoint(9, 2);
+  markerOptions = { icon:desIcon, draggable: true };
+  var passenger_des = new GLatLng(50.4504,-104.626);
+  var marker_des = new GMarker(passenger_des, markerOptions);
+  GEvent.addListener(marker_des, "dragstart", function() {
+  map.closeInfoWindow();
+  });
+  GEvent.addListener(marker_des, "dragend", function() {
+  document.getElementById('web_passenger_web_locations_attributes_1_latitude').defaultValue = String(marker_des.getLatLng().lat());
+  document.getElementById('web_passenger_web_locations_attributes_1_longitude').defaultValue = String(marker_des.getLatLng().lng());
+  });
+  map.addOverlay(marker_des);
+  document.getElementById('web_passenger_password').defaultValue = "I love Sasktel";
+  <% #colors for each bus
+    colors = Array.new
+    colors << "\"#ff0000\"" #bus1
+    colors << "\"#00ff00\"" #bus2
+    colors << "\"#0000ff\"" #bus3
+    colors << "\"#ff0f00\"" #bus4
+    colors << "\"#ff00f0\"" #bus5
+    colors << "\"#00f0ff\"" #bus6
+    #draw the routine line
+    buses = WebBus.all 
+      buses.each do |bus|
+      %>
+      var polyline = new GPolyline([
+      <%
+      locations = Array.new
+      web_locs = bus.web_locations.sort_by {|a| a.order_num }
+      web_locs.each do |location|
+        %>new GLatLng( <%=location.latitude.to_s%>, <%=location.longitude.to_s%>), 
+      <% end %>
+      ],<%= colors[(bus.id-1)%6] %>,5,1);
+      map.addOverlay(polyline);
+
+              var point = new GLatLng( <%=web_locs[0].latitude.to_s%>, <%=web_locs[0].longitude.to_s%>)
+              title_str = "Bus: <%=web_locs[0].web_bus.id%>" 
+              var busIcon = new GIcon(G_DEFAULT_ICON);
+              busIcon.shadow = "/images/bus_shadow.png";
+              busIcon.image = "/images/bus_icon.png";
+              busIcon.iconSize = new GSize(50, 33);
+              busIcon.shadowSize = new GSize(51, 21);
+              busIcon.iconAnchor = new GPoint(9, 24);
+              busIcon.infoWindowAnchor = new GPoint(9, 2);
+              markerOptions = { icon:busIcon, title : title_str};
+              var marker<%=web_locs[0].id%> = new GMarker(point,markerOptions);
+              var detail_str = "route number: <%=web_locs[0].order_num%>";
+              map.addOverlay(addInfoWindowToMarker(marker<%=web_locs[0].id%>,detail_str,{}));
+      <% end %>
+      document.getElementById('web_passenger_web_locations_attributes_0_latitude').defaultValue = String(marker_src.getLatLng().lat());
+      document.getElementById('web_passenger_web_locations_attributes_0_longitude').defaultValue = String(marker_src.getLatLng().lng());
+      document.getElementById('web_passenger_web_locations_attributes_1_latitude').defaultValue = String(marker_des.getLatLng().lat());
+      document.getElementById('web_passenger_web_locations_attributes_1_longitude').defaultValue = String(marker_des.getLatLng().lng());
+});
+</script>

@@ -1,0 +1,2 @@
+module WebLocksHelper
+end

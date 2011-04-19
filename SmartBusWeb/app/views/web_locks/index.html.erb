@@ -1,0 +1,22 @@
+<h1>Listing web_locks</h1>
+
+<table>
+  <tr>
+    <th>Resource</th>
+    <th>In use</th>
+  </tr>
+
+<% @web_locks.each do |web_lock| %>
+  <tr>
+    <td><%=h web_lock.resource %></td>
+    <td><%=h web_lock.in_use %></td>
+    <td><%= link_to 'Show', web_lock %></td>
+    <td><%= link_to 'Edit', edit_web_lock_path(web_lock) %></td>
+    <td><%= link_to 'Destroy', web_lock, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New web_lock', new_web_lock_path %>

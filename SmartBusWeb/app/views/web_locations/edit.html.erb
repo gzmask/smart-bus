@@ -1,0 +1,48 @@
+<h1>Editing web_location</h1>
+
+<% form_for(@web_location) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :web_bus_id %><br />
+    <%= f.text_field :web_bus_id %>
+  </p>
+  <p>
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
+  </p>
+  <p>
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude %>
+  </p>
+  <p>
+    <%= f.label :is_current %><br />
+    <%= f.check_box :is_current %>
+  </p>
+  <p>
+    <%= f.label :is_end %><br />
+    <%= f.check_box :is_end %>
+  </p>
+  <p>
+    <%= f.label :is_pickup %><br />
+    <%= f.check_box :is_pickup %>
+  </p>
+  <p>
+    <%= f.label :is_dropdown %><br />
+    <%= f.check_box :is_dropdown %>
+  </p>
+  <p>
+    <%= f.label :web_passenger_id %><br />
+    <%= f.text_field :web_passenger_id %>
+  </p>
+  <p>
+    <%= f.label :order_num %><br />
+    <%= f.text_field :order_num %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @web_location %> |
+<%= link_to 'Back', web_locations_path %>

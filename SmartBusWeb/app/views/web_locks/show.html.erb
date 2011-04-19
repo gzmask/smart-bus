@@ -1,0 +1,13 @@
+<p>
+  <b>Resource:</b>
+  <%=h @web_lock.resource %>
+</p>
+
+<p>
+  <b>In use:</b>
+  <%=h @web_lock.in_use %>
+</p>
+
+
+<%= link_to 'Edit', edit_web_lock_path(@web_lock) %> |
+<%= link_to 'Back', web_locks_path %>
